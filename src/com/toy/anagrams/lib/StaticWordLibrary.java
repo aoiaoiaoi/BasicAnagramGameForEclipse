@@ -81,7 +81,10 @@ final class StaticWordLibrary extends WordLibrary {
         "hotjava",
         "vertex",
         "unsigned",
-        "traditional"};
+        "traditional",
+        "pudding"
+        
+    };
 
     private static final String[] SCRAMBLED_WORD_LIST = {
         "batsartcoin",
@@ -128,7 +131,8 @@ final class StaticWordLibrary extends WordLibrary {
         "ohjtvaa",
         "evtrxe",
         "nuisngde",
-        "rtdatioialn"
+        "rtdatioialn",
+        "ddinpug"
     };
     
     final static WordLibrary DEFAULT = new StaticWordLibrary();
@@ -154,7 +158,7 @@ final class StaticWordLibrary extends WordLibrary {
      * @return word at that index in its scrambled form
      */
     public String getScrambledWord(int idx) {
-        return SCRAMBLED_WORD_LIST[idx];
+    	return SCRAMBLED_WORD_LIST[idx];
     }
 
     /**
