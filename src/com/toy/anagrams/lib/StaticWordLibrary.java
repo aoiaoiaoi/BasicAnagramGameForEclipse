@@ -31,6 +31,8 @@
 
 package com.toy.anagrams.lib;
 
+import java.util.Random;
+
 /**
  * Implementation of the logic for the Anagram Game application.
  */
@@ -50,9 +52,10 @@ final class StaticWordLibrary extends WordLibrary {
         "dependency",
         "disambiguate",
         "dynamic",
-        "encapsulation",
+        "enjoy",
         "equivalent",
         "expression",
+        "fantastic",
         "facilitate",
         "fragment",
         "hexadecimal",
@@ -81,9 +84,13 @@ final class StaticWordLibrary extends WordLibrary {
         "hotjava",
         "vertex",
         "unsigned",
-        "traditional"};
+        "traditional"
+        };
 
-    private static final String[] SCRAMBLED_WORD_LIST = {
+    
+  
+
+    /*private static final String[] SCRAMBLED_WORD_LIST = {
         "batsartcoin",
         "maibuguos",
         "ratimhteci",
@@ -129,7 +136,7 @@ final class StaticWordLibrary extends WordLibrary {
         "evtrxe",
         "nuisngde",
         "rtdatioialn"
-    };
+    };*/
     
     final static WordLibrary DEFAULT = new StaticWordLibrary();
 
@@ -147,6 +154,31 @@ final class StaticWordLibrary extends WordLibrary {
     public String getWord(int idx) {
         return WORD_LIST[idx];
     }
+    
+    public String getShuffledWord(int idx) {
+
+    	String base_word=getWord(idx);
+    	String[] sc_word = base_word.split("");
+    	
+    	Random rnd1 = new Random();
+        Random rnd2 = new Random(); 
+    	
+        for(int i=1;i<=10;i++){         
+           int ran1 = rnd1.nextInt(sc_word.length);
+           int ran2 = rnd2.nextInt(sc_word.length);
+       
+           String tmp = sc_word[ran1];
+           sc_word[ran1] = sc_word[ran2];
+           sc_word[ran2] = tmp;
+        }
+    	
+    	StringBuffer scrambled_word = new StringBuffer();
+    	for (int i = 0; i < sc_word.length; i++) {
+    		scrambled_word.append(sc_word[i]);
+    	}
+
+    	return new String(scrambled_word);
+    }
 
     /**
      * Gets the word at a given index in its scrambled form.
@@ -154,7 +186,8 @@ final class StaticWordLibrary extends WordLibrary {
      * @return word at that index in its scrambled form
      */
     public String getScrambledWord(int idx) {
-        return SCRAMBLED_WORD_LIST[idx];
+    
+        return getShuffledWord(idx);
     }
 
     /**
